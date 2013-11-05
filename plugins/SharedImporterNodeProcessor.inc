@@ -85,14 +85,17 @@ class SharedImporterNodeProcessor extends FeedsNodeProcessor {
     // exist in the database.
     foreach ($this->uniqueTargets($source, $result) as $target => $value) {
 
+      // Use a copy of the query object so we don't wind up with invalid conditions.
+      $target_query = clone $query;
+
       switch ($target) {
 
         case 'url':
-          $entity_id = $query->condition('url', $value)->execute()->fetchField();
+          $entity_id = $target_query->condition('url', $value)->execute()->fetchField();
           break;
 
         case 'guid':
-          $entity_id = $query->condition('guid', $value)->execute()->fetchField();
+          $entity_id = $target_query->condition('guid', $value)->execute()->fetchField();
           break;
 
       }
