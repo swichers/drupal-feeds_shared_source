@@ -1,8 +1,5 @@
 name = "Feeds Shared Source"
 description = "Allows different Feeds importers to have the same destination node."
 core = "7.x"
-version = "7.x-1.0"
-php = "5.2.4"
-package = "McMurry"
 
 dependencies[] = "feeds"
